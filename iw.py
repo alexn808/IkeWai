@@ -1,5 +1,5 @@
 import time
-import datetime
+import datex1time
 import logging
 import json
 
@@ -244,7 +244,43 @@ if __name__ == "__main__":
             log_iw(iw_dict_acc)
             log_iw(iw_dict_hot)
 
-            # Raise sensor module to water-air interace.
+
+            #prepare dictionaries into json
+            dict_json = json.dumps(iw_dict)
+            adc_json = json.dumps(iw_dict_adc)
+            rgb_json = json.dumps(iw_dict_rgb)
+            acc_json = json.dumps(iw_dict_acc)
+            hot_json = json.dumps(iw_dict_hot)
+
+            log.iw("Writing Data...")
+            #write json files
+            t = time.localtime()
+            timestamp = time.strftime('%b-%d-%Y_%H%M', t)
+            #write dict
+            BACKUP_NAME = ("dict" + timestamp)
+            f = open( BACKUP_NAME.json, "w")
+            f.write(dict_json)
+            f.close()
+            BACKUP_NAME = ("adc" + timestamp)
+            f = open(BACKUP_NAME.json, "w")
+            f.write(adc_json)
+            f.close()
+            BACKUP_NAME = ("rgb" + timestamp)
+            f = open(BACKUP_NAME.json, "w")
+            f.write(dict_json)
+            f.close()
+            BACKUP_NAME = ("acc" + timestamp)
+            f = open(BACKUP_NAME.json, "w")
+            f.write(acc_json)
+            f.close()
+            BACKUP_NAME = ("hot" + timestamp)
+            f = open(BACKUP_NAME.json, "w")
+            f.write(hot_json)
+            f.close()
+
+            log.iw("Data written...")
+
+            # Raise sensor module to water-air interface.
             #lib.iw_motor.raise_sensors(steps_for_5_foot)
             try:
                 # Lower sensor module until water level.
