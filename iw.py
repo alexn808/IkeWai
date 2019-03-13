@@ -1,5 +1,5 @@
 import time
-import datex1time
+import datetime
 import logging
 import json
 
@@ -11,7 +11,7 @@ import lib.iw_rgb
 
 
 def log_iw(message):
-    print(message)
+   #print(message)
     logging.debug(message)
 
 
@@ -127,7 +127,9 @@ if __name__ == "__main__":
             dt = "".join(dt)
 
             log_name = 'log_' + dt + '.txt'
-            logging.basicConfig(filename=r'/home/pi/ide/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+	    f=open(
+            ##logging.basicConfig(filename=r'/home/pi/ide/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filemode='w')
+            logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(message)s", datefmt="%m/%d%Y  %I:%M:%S %p", filename=log_name , filemode="w+")
             log_iw('iw.py starting...')
             log_iw('Time_Date: ' + str(dt))
 

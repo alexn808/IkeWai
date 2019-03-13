@@ -1,2 +1,0 @@
-{"_id":{"$oid":"5c58df2780cc1faa765e3adf"},"{ item: \"journal\", qty: 25, status: \"A\",     size: { h: 14, w: 21, uom: \"cm\" }, tags: [ \"blank\", \"red\" ] }":""}
-{"_id":{"$oid":"5c58df5b80cc1faa765e3ae3"},"item":"journal","qty":"25","status":"A","size":{},"tags":[""]}

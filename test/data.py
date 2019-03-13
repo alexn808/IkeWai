@@ -8,7 +8,7 @@ type(loaded_r) #Output dict
 print loaded_r
 print(reading)
 sample = [{'ObjectInterpolator': 1629,  'PointInterpolator': 1675, 'RectangleInterpolator': 2042},
-          {'ObjectInterpolator': 1629, 'PointInterpolator': 1675, 'RectangleInterpolator': 2042}]
+{'ObjectInterpolator': 1629, 'PointInterpolator': 1675, 'RectangleInterpolator': 2042}]
 json = json.dumps(sample)
 f = open("import.json","w")
 f.write(json)
