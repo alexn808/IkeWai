@@ -2,6 +2,7 @@ import time
 import datetime
 import logging
 import json
+import os
 
 import lib.iw_motor
 import lib.iw_adc
@@ -127,8 +128,7 @@ if __name__ == "__main__":
             dt = "".join(dt)
 
             log_name = 'log_' + dt + '.txt'
-            logging.basicConfig(filename=r'/home/pi/Desktop/ikewai/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-
+            ##logging.basicConfig(filename=r'/home/pi/ide/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
             log_iw('iw.py starting...')
             log_iw('Time_Date: ' + str(dt))
 
@@ -246,42 +246,50 @@ if __name__ == "__main__":
             log_iw(iw_dict_hot)
 
 
-            #prepare dictionaries into json
+	    #prepare dictionaries into json
             dict_json = json.dumps(iw_dict)
             adc_json = json.dumps(iw_dict_adc)
             rgb_json = json.dumps(iw_dict_rgb)
             acc_json = json.dumps(iw_dict_acc)
             hot_json = json.dumps(iw_dict_hot)
-
-            log.iw("Writing Data...")
             #write json files
             t = time.localtime()
-            timestamp = time.strftime('%b-%d-%Y_%H%M', t)
+            timestamp = time.strftime('%b-%d-%Y', t)
             #write dict
-            BACKUP_NAME = ("dict" + timestamp)
-            f = open( BACKUP_NAME.json, "w")
+	    save_path = '/home/pi/Desktop/IkeWai_Code/data'
+
+            dict_log = "dict_" + timestamp
+	    completeName = os.path.join(save_path, '%s.json' % dict_log)	
+            f = open(completeName, "a+")
             f.write(dict_json)
             f.close()
-            BACKUP_NAME = ("adc" + timestamp)
-            f = open(BACKUP_NAME.json, "w")
+            
+	    adc_log = "adc_" + timestamp
+	    completeName = os.path.join(save_path, '%s.json' % adc_log)	
+            f = open(completeName, "a+")
             f.write(adc_json)
             f.close()
-            BACKUP_NAME = ("rgb" + timestamp)
-            f = open(BACKUP_NAME.json, "w")
+            
+	    rgb_log = "rgb_" + timestamp
+	    completeName = os.path.join(save_path, '%s.json' % rgb_log)	
+            f = open(completeName, "a+")
             f.write(dict_json)
             f.close()
-            BACKUP_NAME = ("acc" + timestamp)
-            f = open(BACKUP_NAME.json, "w")
+
+            acc_log = "acc_" + timestamp
+	    completeName = os.path.join(save_path, '%s.json' % acc_log)	
+            f = open(completeName, "a+")
             f.write(acc_json)
             f.close()
-            BACKUP_NAME = ("hot" + timestamp)
-            f = open(BACKUP_NAME.json, "w")
+
+            hot_log = "hot_" + timestamp
+	    completeName = os.path.join(save_path, '%s.json' % hot_log)	
+            f = open(completeName, "a+")
             f.write(hot_json)
             f.close()
 
-            log.iw("Data written...")
 
-            # Raise sensor module to water-air interface.
+            # Raise sensor module to water-air interace.
             #lib.iw_motor.raise_sensors(steps_for_5_foot)
             try:
                 # Lower sensor module until water level.
