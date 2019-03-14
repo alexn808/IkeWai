@@ -103,9 +103,9 @@ if zMag > 32767 :
     zMag -= 65536
 
 # Output data to screen
-print "Acceleration in X-Axis : %d" % xAccl
-print "Acceleration in Y-Axis : %d" % yAccl
-print "Acceleration in Z-Axis : %d" % zAccl
-print "Magnetic field in X-Axis : %d" %xMag
-print "Magnetic field in Y-Axis : %d" %yMag
-print "Magnetic field in Z-Axis : %d" %zMag
+print("Acceleration in X-Axis : %d" % xAccl)
+print("Acceleration in Y-Axis : %d" % yAccl)
+print("Acceleration in Z-Axis : %d" % zAccl)
+print("Magnetic field in X-Axis : %d" % xMag)
+print("Magnetic field in Y-Axis : %d" % yMag)
+print("Magnetic field in Z-Axis : %d" % zMag)

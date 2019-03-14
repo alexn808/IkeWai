@@ -127,7 +127,7 @@ if __name__ == "__main__":
             dt = "".join(dt)
 
             log_name = 'log_' + dt + '.txt'
-            logging.basicConfig(filename=r'/home/pi/ide/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+            logging.basicConfig(filename=r'/home/pi/Desktop/ikewai/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
             log_iw('iw.py starting...')
             log_iw('Time_Date: ' + str(dt))
 
