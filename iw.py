@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
             log_iw("Dropping sensor module to water-air interface...")
 
-            while 12 > adc_initial < 2:
+            while 12 < adc_initial < 2:
                 try:
                     lib.iw_motor.lower_sensors(steps_for_foot)
                     total_steps = total_steps + steps_for_foot
@@ -246,7 +246,7 @@ if __name__ == "__main__":
             log_iw(iw_dict_hot)
 
 
-            #prepare dictionaries into json
+            # Prepare dictionaries into json.
             dict_json = json.dumps(iw_dict)
             adc_json = json.dumps(iw_dict_adc)
             rgb_json = json.dumps(iw_dict_rgb)
@@ -254,10 +254,10 @@ if __name__ == "__main__":
             hot_json = json.dumps(iw_dict_hot)
 
             log.iw("Writing Data...")
-            #write json files
+            # Write json files.
             t = time.localtime()
             timestamp = time.strftime('%b-%d-%Y_%H%M', t)
-            #write dict
+            # Write dict.
             BACKUP_NAME = ("dict" + timestamp)
             f = open( BACKUP_NAME.json, "w")
             f.write(dict_json)

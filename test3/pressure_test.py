@@ -3,7 +3,6 @@ import datetime
 import logging
 import json
 import os
-import socket
 
 import lib.iw_motor
 import lib.iw_adc
@@ -80,21 +79,11 @@ sleep_between_trials = 3600
 
 adc_initial = 0
 depth = 0
-#teps_for_foot = 125 # Real
-steps_for_foot = 30  # demo
-steps_for_5_foot = steps_for_foot * 1 # change to 5 after demo
-
+# steps_for_foot = 125 # Real
+steps_for_foot = 7  # demo
+steps_for_5_foot = steps_for_foot * 1
 
 if __name__ == "__main__":
-
-    # print('Starting')
-    # print('Spinning')
-    # lib.iw_motor.lower_sensors(steps_for_foot)
-    # print('Done')
-
-    # print("0001")
-    # lib.iw_motor.set_step(0, 0, 0, 1)
-    # time.sleep(120)
 
     while True:
         try:
@@ -128,8 +117,8 @@ if __name__ == "__main__":
             dt.insert(0, dt.pop(14))
             dt = "".join(dt)
 
-            log_name = 'log_' + dt + '.txt'
-            logging.basicConfig(filename=r'/home/pi/Desktop/ikewai/logs/client_logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+            log_name = 'log_pressure_' + dt + '.txt'
+            logging.basicConfig(filename=r'/home/pi/Desktop/ikewai/logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
             log_iw('iw.py starting...')
             log_iw('Time_Date: ' + str(dt))
 
@@ -139,42 +128,6 @@ if __name__ == "__main__":
             except IOError:
                 log_iw('IOError from initial RGB occurred...')
                 pass
-
-            # # Lower sensor module to the water-air interface.
-            # try:
-            #     log_iw("Dropping sensor module to water-air interface...")
-            #
-            #     while 12 > adc_initial < 2:
-            #         lib.iw_motor.lower_sensors(steps_for_foot)
-            #         total_steps = total_steps + steps_for_foot
-            #         adc_initial = lib.iw_adc.get_adc0()
-            #         log_iw(adc_initial)
-            #         depth += 1
-            #         log_iw('Depth to water level:    ' + str(depth))
-            # except IOError:
-            #     log_iw('IOError from ADC occurred...')
-            #     pass
-
-            # Lower sensor module to the water-air interface.
-
-            log_iw("Dropping sensor module to water-air interface...")
-
-            while 12 > adc_initial < 2:
-                try:
-                    lib.iw_motor.lower_sensors(steps_for_foot)
-                    total_steps = total_steps + steps_for_foot
-                    adc_initial = lib.iw_adc.get_adc0()
-                    log_iw(adc_initial)
-                    depth += 1
-                    log_iw('Depth to water level:    ' + str(depth))
-                except IOError:
-                    log_iw('IOError from ADC during finding occurred...')
-                    break
-
-            # Lower sensor module length of module.
-            log_iw('Lowering sensor module for complete submersion...')
-            lib.iw_motor.lower_sensors(5)
-            total_steps = total_steps + 5
 
             # Create dictionaries to store sensor data.
             iw_dict = {}
@@ -232,12 +185,6 @@ if __name__ == "__main__":
                                 iw_dict_hot['F ' + reading_number] = get_bad_sensor(y)
                             pass
 
-                # Lower sensor module 5 more feet.
-                log_iw('Lowering sensor module to next increment...')
-                lib.iw_motor.lower_sensors(steps_for_5_foot)
-                total_steps = total_steps + steps_for_5_foot
-                time.sleep(5)
-
             # Log Dictionaries
             iw_dict['ADC'] = iw_dict_adc
             log_iw(iw_dict)
@@ -246,97 +193,7 @@ if __name__ == "__main__":
             log_iw(iw_dict_acc)
             log_iw(iw_dict_hot)
 
-
-            #prepare dictionaries into json
-            dict_json = json.dumps(iw_dict)
-            adc_json = json.dumps(iw_dict_adc)
-            rgb_json = json.dumps(iw_dict_rgb)
-            acc_json = json.dumps(iw_dict_acc)
-            hot_json = json.dumps(iw_dict_hot)
-            #write json files
-            t = time.localtime()
-            timestamp = time.strftime('%b-%d-%Y', t)
-            #write dict
-            save_path = '/home/pi/Desktop/ikewai/data'
-
-            dict_log = "dict_" + timestamp
-            completeName = os.path.join(save_path, '%s.json' % dict_log)
-            f = open(completeName, "a+")
-            f.write(dict_json)
-            f.close()
-            
-            adc_log = "adc_" + timestamp
-            completeName = os.path.join(save_path, '%s.json' % adc_log)
-            f = open(completeName, "a+")
-            f.write(adc_json)
-            f.close()
-            
-            rgb_log = "rgb_" + timestamp
-            completeName = os.path.join(save_path, '%s.json' % rgb_log)
-            f = open(completeName, "a+")
-            f.write(dict_json)
-            f.close()
-
-            acc_log = "acc_" + timestamp
-            completeName = os.path.join(save_path, '%s.json' % acc_log)
-            f = open(completeName, "a+")
-            f.write(acc_json)
-            f.close()
-
-            hot_log = "hot_" + timestamp
-            completeName = os.path.join(save_path, '%s.json' % hot_log)
-            f = open(completeName, "a+")
-            f.write(hot_json)
-            f.close()
-
-            # Raise sensor module to water-air interace.
-            #lib.iw_motor.raise_sensors(steps_for_5_foot)
-            try:
-                # Raise sensor module until water level.
-
-                log_iw("Raising load to water-air interface...")
-                while 2 < adc_initial < 12:
-                    lib.iw_motor.raise_sensors(steps_for_foot)
-                    total_steps = total_steps + steps_for_foot
-                    adc_initial = lib.iw_adc.get_adc0()
-            except IOError:
-                log_iw('IOError from ADC during raising occurred...')
-                pass
-
-            print('Client running...')
-
-            tcp_ip = '192.168.0.125'  # mac
-            tcp_port = 6969
-            buffer_size = 1024  # Normally 1024, but we want fast response
-
-            save_path = '/home/pi/Desktop/ikewai/logs/client_logs/'
-            completeName = os.path.join(save_path, log_name)
-            f = open(completeName, 'rb')
-            l = f.read(1024)
-
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((tcp_ip, tcp_port))
-
-            while l:
-                print('Sending...')
-                s.send(l)
-                l = f.read(1024)
-
-            f.close()
-
-            s.shutdown(socket.SHUT_WR)
-
-            # s.send(f.encode('utf-8'))
-            data = s.recv(buffer_size)
-            s.close()
-
-            print('Received data: ', data.decode('utf-8'))
-
-            # Wait for sleep_between_trials number of seconds before repeating entire process.
-            log_iw('Sleeping...')
-            time.sleep(sleep_between_trials)
-
-        except(KeyboardInterrupt, SystemExit):
+        except (KeyboardInterrupt, SystemExit):
             log_iw('Exiting...')
             lib.iw_rgb.turn_led_off()
             log_iw('Exited...')
