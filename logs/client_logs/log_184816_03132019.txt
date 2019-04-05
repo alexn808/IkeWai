@@ -1,0 +1,21 @@
+03/13/2019 06:48:16 PM iw.py starting...
+03/13/2019 06:48:16 PM Time_Date: 184816_03132019
+03/13/2019 06:48:16 PM Dropping sensor module to water-air interface...
+03/13/2019 06:48:18 PM 12.2857499313
+03/13/2019 06:48:18 PM Depth to water level:    1
+03/13/2019 06:48:18 PM Lowering sensor module for complete submersion...
+03/13/2019 06:48:18 PM Level #0
+03/13/2019 06:48:18 PM Level-Sample: 0-1
+03/13/2019 06:48:19 PM A0 (V): 12.2857499313
+03/13/2019 06:48:20 PM A1 (V): 12.2857499313
+03/13/2019 06:48:21 PM Red:     167
+03/13/2019 06:48:21 PM Green:   198
+03/13/2019 06:48:21 PM Blue:    94
+03/13/2019 06:48:22 PM X-Acc:   192
+03/13/2019 06:48:22 PM Y-Acc:   320
+03/13/2019 06:48:22 PM Z-Acc:   16832
+03/13/2019 06:48:23 PM Temp (C):    22.9375
+03/13/2019 06:48:23 PM Temp (F):    73.2875
+03/13/2019 06:48:23 PM Lowering sensor module to next increment...
+03/13/2019 06:48:24 PM Exiting...
+03/13/2019 06:48:24 PM Exited...

@@ -1,0 +1,17 @@
+03/28/2019 01:52:18 PM iw.py starting...
+03/28/2019 01:52:18 PM Time_Date: 135218_03282019
+03/28/2019 01:52:18 PM Dropping sensor module to water-air interface...
+03/28/2019 01:52:19 PM 0.0532516251106
+03/28/2019 01:52:19 PM Depth to water level:    1
+03/28/2019 01:52:21 PM 0.0532516251106
+03/28/2019 01:52:21 PM Depth to water level:    2
+03/28/2019 01:52:23 PM 0.0530641193884
+03/28/2019 01:52:23 PM Depth to water level:    3
+03/28/2019 01:52:24 PM 0.0532516251106
+03/28/2019 01:52:24 PM Depth to water level:    4
+03/28/2019 01:52:26 PM 0.0532516251106
+03/28/2019 01:52:26 PM Depth to water level:    5
+03/28/2019 01:52:28 PM 0.0532516251106
+03/28/2019 01:52:28 PM Depth to water level:    6
+03/28/2019 01:52:28 PM Exiting...
+03/28/2019 01:52:28 PM Exited...

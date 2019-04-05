@@ -1,0 +1,140 @@
+03/28/2019 03:31:26 PM iw.py starting...
+03/28/2019 03:31:26 PM Time_Date: 153126_03282019
+03/28/2019 03:31:26 PM Dropping sensor module to water-air interface...
+03/28/2019 03:31:28 PM 0.0489389934996
+03/28/2019 03:31:28 PM Depth to water level:    1
+03/28/2019 03:31:29 PM 0.052689107944
+03/28/2019 03:31:29 PM Depth to water level:    2
+03/28/2019 03:31:31 PM 0.0528766136662
+03/28/2019 03:31:31 PM Depth to water level:    3
+03/28/2019 03:31:33 PM 0.0528766136662
+03/28/2019 03:31:33 PM Depth to water level:    4
+03/28/2019 03:31:34 PM 0.0528766136662
+03/28/2019 03:31:34 PM Depth to water level:    5
+03/28/2019 03:31:36 PM 0.0528766136662
+03/28/2019 03:31:36 PM Depth to water level:    6
+03/28/2019 03:31:38 PM 0.0528766136662
+03/28/2019 03:31:38 PM Depth to water level:    7
+03/28/2019 03:31:39 PM 0.0528766136662
+03/28/2019 03:31:40 PM Depth to water level:    8
+03/28/2019 03:31:41 PM 0.0528766136662
+03/28/2019 03:31:41 PM Depth to water level:    9
+03/28/2019 03:31:43 PM 0.0528766136662
+03/28/2019 03:31:43 PM Depth to water level:    10
+03/28/2019 03:31:45 PM 0.0528766136662
+03/28/2019 03:31:45 PM Depth to water level:    11
+03/28/2019 03:31:46 PM 0.052689107944
+03/28/2019 03:31:46 PM Depth to water level:    12
+03/28/2019 03:31:48 PM 0.0528766136662
+03/28/2019 03:31:48 PM Depth to water level:    13
+03/28/2019 03:31:50 PM 0.052689107944
+03/28/2019 03:31:50 PM Depth to water level:    14
+03/28/2019 03:31:51 PM 0.0528766136662
+03/28/2019 03:31:51 PM Depth to water level:    15
+03/28/2019 03:31:53 PM 0.0528766136662
+03/28/2019 03:31:53 PM Depth to water level:    16
+03/28/2019 03:31:55 PM 0.052689107944
+03/28/2019 03:31:55 PM Depth to water level:    17
+03/28/2019 03:31:57 PM 0.0528766136662
+03/28/2019 03:31:57 PM Depth to water level:    18
+03/28/2019 03:31:58 PM 0.0528766136662
+03/28/2019 03:31:58 PM Depth to water level:    19
+03/28/2019 03:32:00 PM 0.052689107944
+03/28/2019 03:32:00 PM Depth to water level:    20
+03/28/2019 03:32:02 PM 0.052689107944
+03/28/2019 03:32:02 PM Depth to water level:    21
+03/28/2019 03:32:03 PM 0.0528766136662
+03/28/2019 03:32:03 PM Depth to water level:    22
+03/28/2019 03:32:05 PM 0.0528766136662
+03/28/2019 03:32:05 PM Depth to water level:    23
+03/28/2019 03:32:07 PM 0.052689107944
+03/28/2019 03:32:07 PM Depth to water level:    24
+03/28/2019 03:32:09 PM 0.0528766136662
+03/28/2019 03:32:09 PM Depth to water level:    25
+03/28/2019 03:32:10 PM 0.0528766136662
+03/28/2019 03:32:10 PM Depth to water level:    26
+03/28/2019 03:32:12 PM 0.052689107944
+03/28/2019 03:32:12 PM Depth to water level:    27
+03/28/2019 03:32:14 PM 0.052689107944
+03/28/2019 03:32:14 PM Depth to water level:    28
+03/28/2019 03:32:15 PM 0.0528766136662
+03/28/2019 03:32:15 PM Depth to water level:    29
+03/28/2019 03:32:17 PM 0.052689107944
+03/28/2019 03:32:17 PM Depth to water level:    30
+03/28/2019 03:32:19 PM 0.052689107944
+03/28/2019 03:32:19 PM Depth to water level:    31
+03/28/2019 03:32:20 PM 0.0528766136662
+03/28/2019 03:32:20 PM Depth to water level:    32
+03/28/2019 03:32:22 PM 0.052689107944
+03/28/2019 03:32:22 PM Depth to water level:    33
+03/28/2019 03:32:24 PM 0.0528766136662
+03/28/2019 03:32:24 PM Depth to water level:    34
+03/28/2019 03:32:26 PM 0.0528766136662
+03/28/2019 03:32:26 PM Depth to water level:    35
+03/28/2019 03:32:27 PM 0.0528766136662
+03/28/2019 03:32:27 PM Depth to water level:    36
+03/28/2019 03:32:29 PM 0.0528766136662
+03/28/2019 03:32:29 PM Depth to water level:    37
+03/28/2019 03:32:31 PM 0.0528766136662
+03/28/2019 03:32:31 PM Depth to water level:    38
+03/28/2019 03:32:32 PM 0.0528766136662
+03/28/2019 03:32:32 PM Depth to water level:    39
+03/28/2019 03:32:34 PM 0.0528766136662
+03/28/2019 03:32:34 PM Depth to water level:    40
+03/28/2019 03:32:36 PM 0.0528766136662
+03/28/2019 03:32:36 PM Depth to water level:    41
+03/28/2019 03:32:37 PM 0.0528766136662
+03/28/2019 03:32:37 PM Depth to water level:    42
+03/28/2019 03:32:39 PM 0.0528766136662
+03/28/2019 03:32:39 PM Depth to water level:    43
+03/28/2019 03:32:41 PM 0.0528766136662
+03/28/2019 03:32:41 PM Depth to water level:    44
+03/28/2019 03:32:42 PM 0.0528766136662
+03/28/2019 03:32:42 PM Depth to water level:    45
+03/28/2019 03:32:44 PM 0.0528766136662
+03/28/2019 03:32:44 PM Depth to water level:    46
+03/28/2019 03:32:46 PM 0.0528766136662
+03/28/2019 03:32:46 PM Depth to water level:    47
+03/28/2019 03:32:48 PM 0.0528766136662
+03/28/2019 03:32:48 PM Depth to water level:    48
+03/28/2019 03:32:49 PM 0.0528766136662
+03/28/2019 03:32:49 PM Depth to water level:    49
+03/28/2019 03:32:51 PM 0.0528766136662
+03/28/2019 03:32:51 PM Depth to water level:    50
+03/28/2019 03:32:53 PM 0.0528766136662
+03/28/2019 03:32:53 PM Depth to water level:    51
+03/28/2019 03:32:54 PM 0.0528766136662
+03/28/2019 03:32:54 PM Depth to water level:    52
+03/28/2019 03:32:56 PM 0.0528766136662
+03/28/2019 03:32:56 PM Depth to water level:    53
+03/28/2019 03:32:58 PM 0.0528766136662
+03/28/2019 03:32:58 PM Depth to water level:    54
+03/28/2019 03:32:59 PM 0.0528766136662
+03/28/2019 03:32:59 PM Depth to water level:    55
+03/28/2019 03:33:01 PM 0.0528766136662
+03/28/2019 03:33:01 PM Depth to water level:    56
+03/28/2019 03:33:03 PM 0.0528766136662
+03/28/2019 03:33:03 PM Depth to water level:    57
+03/28/2019 03:33:04 PM 0.0528766136662
+03/28/2019 03:33:04 PM Depth to water level:    58
+03/28/2019 03:33:05 PM IOError from ADC during finding occurred...
+03/28/2019 03:33:05 PM Lowering sensor module for complete submersion...
+03/28/2019 03:33:05 PM Level #0
+03/28/2019 03:33:05 PM Level-Sample: 0-1
+03/28/2019 03:33:05 PM IOError during 10 occurred...
+03/28/2019 03:33:05 PM ADC0 failed...
+03/28/2019 03:33:05 PM IOError during 10 occurred...
+03/28/2019 03:33:05 PM ADC1 failed...
+03/28/2019 03:33:06 PM IOError during 10 occurred...
+03/28/2019 03:33:06 PM RGB failed...
+03/28/2019 03:33:07 PM IOError during 10 occurred...
+03/28/2019 03:33:07 PM ACC failed...
+03/28/2019 03:33:07 PM IOError during 10 occurred...
+03/28/2019 03:33:07 PM HOT failed...
+03/28/2019 03:33:07 PM Lowering sensor module to next increment...
+03/28/2019 03:33:13 PM {'Level 0': '', 'ADC': {'A1 R1': 'ADC1 failed...', 'A0 R1': 'ADC0 failed...'}}
+03/28/2019 03:33:13 PM {'A1 R1': 'ADC1 failed...', 'A0 R1': 'ADC0 failed...'}
+03/28/2019 03:33:13 PM {'Green R1': 'RGB failed...', 'Red R1': 'RGB failed...', 'Blue R1': 'RGB failed...'}
+03/28/2019 03:33:13 PM {'X R1': 'ACC failed...', 'Y R1': 'ACC failed...', 'Z R1': 'ACC failed...'}
+03/28/2019 03:33:13 PM {'F R1': 'HOT failed...', 'C R1': 'HOT failed...'}
+03/28/2019 03:33:13 PM Raising load to water-air interface...
