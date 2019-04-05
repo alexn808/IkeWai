@@ -159,7 +159,7 @@ if __name__ == "__main__":
 
             log_iw("Dropping sensor module to water-air interface...")
 
-            while 12 > adc_initial < 2:
+            while adc_initial < 2 or adc_initial > 12:
                 try:
                     lib.iw_motor.lower_sensors(steps_for_foot)
                     total_steps = total_steps + steps_for_foot
@@ -295,7 +295,7 @@ if __name__ == "__main__":
                 # Raise sensor module until water level.
 
                 log_iw("Raising load to water-air interface...")
-                while 2 < adc_initial < 12:
+                while adc_initial > 2 and adc_initial < 12:
                     lib.iw_motor.raise_sensors(steps_for_foot)
                     total_steps = total_steps + steps_for_foot
                     adc_initial = lib.iw_adc.get_adc0()

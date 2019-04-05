@@ -94,7 +94,7 @@ def lower_sensors(steps):
         time.sleep(delay)
 
     # Cut power to motor.
-    set_step(1, 0, 0, 0)
+    set_step(0, 0, 0, 0)
 
     # Hold motor position.
     # setStep(1,0,1,0)
@@ -112,4 +112,4 @@ def raise_sensors(steps):
         time.sleep(delay)
 
     # Cut power to motor.
-    set_step(1, 0, 0, 0)
+    set_step(0, 0, 0, 0)
