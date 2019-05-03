@@ -39,6 +39,7 @@ def read_rgb():
     rgb_values = lib.iw_rgb.get_rgb()
     log_iw("Red:     " + str(rgb_values[0]))
     log_iw("Green:   " + str(rgb_values[1]))
+
     log_iw("Blue:    " + str(rgb_values[2]))
     lib.iw_rgb.turn_led_off()
     return rgb_values
@@ -159,7 +160,7 @@ if __name__ == "__main__":
 
             log_iw("Dropping sensor module to water-air interface...")
 
-            while adc_initial > 2 and adc_initial > 12:
+            while 12 > adc_initial < 2:
                 try:
                     lib.iw_motor.lower_sensors(steps_for_foot)
                     total_steps = total_steps + steps_for_foot
@@ -295,7 +296,7 @@ if __name__ == "__main__":
                 # Raise sensor module until water level.
 
                 log_iw("Raising load to water-air interface...")
-                while adc_initial > 2 and adc_initial < 12:
+                while 2 < adc_initial < 12:
                     lib.iw_motor.raise_sensors(steps_for_foot)
                     total_steps = total_steps + steps_for_foot
                     adc_initial = lib.iw_adc.get_adc0()
@@ -305,7 +306,7 @@ if __name__ == "__main__":
 
             print('Client running...')
 
-            tcp_ip = '192.168.0.124'  # mac
+            tcp_ip = '192.168.0.125'  # mac
             tcp_port = 6969
             buffer_size = 1024  # Normally 1024, but we want fast response
 

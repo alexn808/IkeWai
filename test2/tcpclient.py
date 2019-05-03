@@ -3,7 +3,7 @@ import os
 
 print('Client running...')
 
-tcp_ip = '192.168.0.125' # mac
+tcp_ip = '192.168.0.124' # mac
 tcp_port = 6969
 buffer_size = 1024  # Normally 1024, but we want fast response
 

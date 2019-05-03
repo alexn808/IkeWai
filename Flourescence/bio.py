@@ -28,15 +28,16 @@ dataRGB = {}
 # This is to return what parts per X in solution you are testing
 
 def parts_per(value):
-    ppX = {1: "pph",
-           2: "ppt",
-           3: "pptt",
-           4: "ppht",
-           5: "ppm",
-           6: "pptm",
-           7: "pphm",
-           8: "ppb",
-    }
+    ppX = {
+	   1: "ppt",
+           2: "pph",
+           3: "ppth",
+           4: "pptth",
+           5: "pphth",
+           6: "ppm",
+           7: "pptm",
+           8: "pphm",
+           }
     x = int(value)
     # If the value is within the range of what we are testing then
     # we return the value, if not we return an Error
@@ -46,15 +47,15 @@ def parts_per(value):
         return "Error"
 # Used to display how diluted the solution you are testing
 ppX = {
-    1: "parts per hundred (pph, 1:100)",
-    2: "parts per thousand (ppt 1:1000)",
-    3: "parts Per ten thousand (pptt 1:10000)",
-    4: "parts per hundred thousand (ppht 1:100000)",
-    5: "parts per million (ppm 1:1000000)",
-    6: "parts per ten million (pptm 1:10000000)",
-    7: "parts per hundred million (pphm 1:100000000)",
-    8: "parts per billion (ppb 1:1000000000)",
-       }
+    1: "parts per ten (ppt, 1:10)",
+    2: "parts per hundred (pph 1:100)",
+    3: "parts Per thousand (ppth 1:1000)",
+    4: "parts per ten thousand (pptth 1:10000)",
+    5: "parts per hundred thousand (pphth 1:100000)",
+    6: "parts per million (ppm 1:1000000)",
+    7: "parts per ten million (ppm 1:10000000)",
+    8: "parts per hundred million (pphm 1:100000000)",
+}
 
 if __name__ == "__main__":
 
@@ -64,11 +65,9 @@ if __name__ == "__main__":
     print(json.dumps(ppX, indent=4, sort_keys=True))
     parts = raw_input("Select how diluted your solution is: ")
     parts = parts_per(parts)
-    if parts ==  "Error":
-        break
     while True:
         # Sleeps for 1 second
-        time.sleep(1)
+        time.sleep(0.2)
         # Turn on LED
         iw_rgb.turn_led_on()
 
@@ -87,17 +86,17 @@ if __name__ == "__main__":
         # i.e. if the input is 10 bits, the value will be shifted right$
         if green > 255 or red > 255 or blue > 255:
             # determine maximum color value
-                max_color = max(green, red, blue)
-                # determine how many bits exceeded the 8 bit limit
-                exceed_bits = math.ceil(math.log(max_color, 2) - 8)
-                # update value (LSR exceed_bits)
-                green = int(green / math.pow(2, exceed_bits))
-                red   = int(red   / math.pow(2, exceed_bits))
-                blue  = int(blue  / math.pow(2, exceed_bits))
+            max_color = max(green, red, blue)
+            # determine how many bits exceeded the 8 bit limit
+            exceed_bits = math.ceil(math.log(max_color, 2) - 8)
+            # update value (LSR exceed_bits)
+            green = int(green / math.pow(2, exceed_bits))
+            red   = int(red   / math.pow(2, exceed_bits))
+            blue  = int(blue  / math.pow(2, exceed_bits))
         # Store the Data into a dictionary
         dataRGB = {'Green': green,
-                'Red': red,
-                'Blue': blue}
+                   'Red': red,
+                   'Blue': blue}
         # Writing data into dictionary and appending them
         data1.append(dataRGB)
         # Adding up the total amount of RGB values to compute averages later
@@ -111,22 +110,26 @@ if __name__ == "__main__":
         print("red: %.2f" % red)
         print("blue: %.2f" % blue)
         # Sleep for 0.5 seconds so it is more readable
-        time.sleep(0.5)
+        time.sleep(0.1)
+	print"-----------"
         # Turn off LED
         iw_rgb.turn_led_off()
         # Records 3 samples then asks you if you want to record again
-        if count % 3 == 0:
+        if count % 100 == 0:
             text = raw_input("To stop recording data enter 0")
             if text == "0":
                 break
-    # Converting data into a json format
-    totData_json = json.dumps(data1)
-    rgbData_json = json.dumps(dataRGB)
-
     # Computing the averages of all the data
     avgGreen = totGreen/count
     avgRed = totRed/count
     avgBlue = totBlue/count
+    data1.append({'Average Green': avgGreen,
+                  'Average Red': avgRed,
+                  'Average Blue': avgBlue})
+    # Converting data into a json format
+    totData_json = json.dumps(data1)
+    rgbData_json = json.dumps(dataRGB)
+
 
     # Writing save location and names
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -142,8 +145,8 @@ if __name__ == "__main__":
 
     # Setting up the client to start upload
     client = pymongo.MongoClient("mongodb+srv://Ryan:Fablab1@biofinder-rgsud.gcp.mongodb.net/admin")
-    db = client['BioFinder']
-    totData_db = db['Fluorescence']
+    db = client['BioFinder1']
+    totData_db = db[nameoffile + parts]
 
     print("Uploading Data...")
 

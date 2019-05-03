@@ -36,7 +36,7 @@ dt = "".join(dt)
 
 log_name = 'log_' + dt + '.txt'
 
-tcp_ip = '192.168.0.125' # mac
+tcp_ip = '192.168.0.124' # mac
 tcp_port = 6969
 buffer_size = 1024  # Normally 1024, but we want fast response so 20
 
@@ -44,7 +44,10 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((tcp_ip, tcp_port))
 
 #save_path = '/Users/alexnoveloso/Desktop/UHM Archive/EE396F18/ikewai/logs/server_logs'
-save_path = '/Users/alexnoveloso/Desktop/UHM Archive/EE396F18/IkeWaiPc/logs/server_logs'
+#save_path = '/Users/alexnoveloso/Desktop/UHM Archive/EE396F18/IkeWaiPc/logs/server_logs'
+
+#save_path = '/Users/alexnoveloso/Desktop/UHM Archive/EE396F18/IkeWaiPc/logs/server_logs'  #REVERT BACK TO THIS ONE
+save_path = '/Users/Cyrus/Desktop/demo_log'
 completeName = os.path.join(save_path, log_name)
 f = open(completeName, 'wb')
 

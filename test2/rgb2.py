@@ -6,8 +6,7 @@ import math
 # I2C stuff
 bus = smbus.SMBus(1)
 
-for i in range(0,1):
-
+while 1:
     # Using page 9 of the datasheet:
     # https://www.intersil.com/content/dam/Intersil/documents/isl2/isl29125.pdf
     bus.write_byte_data(0x44, 0x01, 0x0D)
@@ -37,3 +36,4 @@ for i in range(0,1):
     print "green: %.2f" %green
     print "red: %.2f" %red
     print "blue: %.2f" %blue
+    time.sleep(1)	
