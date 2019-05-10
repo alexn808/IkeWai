@@ -12,6 +12,7 @@ import pymongo
 import socket
 import logging
 from pymongo import MongoClient
+
 # Since this library is in another folder we need to insert a path to be able to access the library
 sys.path.insert(0, '/home/pi/Desktop/ikewai/lib')
 import iw_rgb
@@ -25,19 +26,20 @@ count = 0
 data1 = []
 dataRGB = {}
 
+
 # This is to return what parts per X in solution you are testing
 
 def parts_per(value):
     ppX = {
-	   1: "ppt",
-           2: "pph",
-           3: "ppth",
-           4: "pptth",
-           5: "pphth",
-           6: "ppm",
-           7: "pptm",
-           8: "pphm",
-           }
+        1: " ppt",
+        2: " pph",
+        3: " ppth",
+        4: " pptth",
+        5: " pphth",
+        6: " ppm",
+        7: " pptm",
+        8: " pphm",
+    }
     x = int(value)
     # If the value is within the range of what we are testing then
     # we return the value, if not we return an Error
@@ -45,6 +47,8 @@ def parts_per(value):
         return ppX.get(x, "Within Range")
     else:
         return "Error"
+
+
 # Used to display how diluted the solution you are testing
 ppX = {
     1: "parts per ten (ppt, 1:10)",
@@ -61,13 +65,13 @@ if __name__ == "__main__":
 
     # Asking for user input
     nameoffile = raw_input("What is liquid you are testing? ")
-    # Printing ppx for user input
+    # Printing ppx for user input and making it pretty
     print(json.dumps(ppX, indent=4, sort_keys=True))
     parts = raw_input("Select how diluted your solution is: ")
     parts = parts_per(parts)
     while True:
         # Sleeps for 1 second
-        time.sleep(0.2)
+        time.sleep(1)
         # Turn on LED
         iw_rgb.turn_led_on()
 
@@ -91,14 +95,15 @@ if __name__ == "__main__":
             exceed_bits = math.ceil(math.log(max_color, 2) - 8)
             # update value (LSR exceed_bits)
             green = int(green / math.pow(2, exceed_bits))
-            red   = int(red   / math.pow(2, exceed_bits))
-            blue  = int(blue  / math.pow(2, exceed_bits))
+            red = int(red / math.pow(2, exceed_bits))
+            blue = int(blue / math.pow(2, exceed_bits))
         # Store the Data into a dictionary
         dataRGB = {'Green': green,
                    'Red': red,
                    'Blue': blue}
         # Writing data into dictionary and appending them
         data1.append(dataRGB)
+
         # Adding up the total amount of RGB values to compute averages later
         totGreen += green
         totRed += red
@@ -111,27 +116,26 @@ if __name__ == "__main__":
         print("blue: %.2f" % blue)
         # Sleep for 0.5 seconds so it is more readable
         time.sleep(0.1)
-	print"-----------"
+        print"-----------"
         # Turn off LED
         iw_rgb.turn_led_off()
         # Records 3 samples then asks you if you want to record again
         if count % 100 == 0:
-            text = raw_input("To stop recording data enter 0")
+            text = raw_input("To stop recording data enter 0: ")
             if text == "0":
                 break
     # Computing the averages of all the data
-    avgGreen = totGreen/count
-    avgRed = totRed/count
-    avgBlue = totBlue/count
+    avgGreen = totGreen / count
+    avgRed = totRed / count
+    avgBlue = totBlue / count
+    # Adding the averages to the end of the python list
     data1.append({'Average Green': avgGreen,
                   'Average Red': avgRed,
                   'Average Blue': avgBlue})
     # Converting data into a json format
     totData_json = json.dumps(data1)
-    rgbData_json = json.dumps(dataRGB)
 
-
-    # Writing save location and names
+    # Writing save location and name
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
     save_path = '/home/pi/Desktop/ikewai/Flourescence'
     name4data = nameoffile + " " + parts + " " + timestamp
@@ -139,13 +143,17 @@ if __name__ == "__main__":
 
     # Creating the files
     print("Saving Data...")
+    # Creating and writing a new file for the RGB data
     f = open(completeName, "w+")
     f.write(totData_json)
     f.close()
 
     # Setting up the client to start upload
+    # //USERNAME:PASSWORD@HOSTNAME/Database
     client = pymongo.MongoClient("mongodb+srv://Ryan:Fablab1@biofinder-rgsud.gcp.mongodb.net/admin")
+    # Sets the file to upload in the database
     db = client['BioFinder1']
+    # Creating the name of file
     totData_db = db[nameoffile + parts]
 
     print("Uploading Data...")
@@ -161,13 +169,11 @@ if __name__ == "__main__":
     client.close()
 
     # Printing the averages for the RGB values
-    print(data1)
+    # print(data1)
     print("Average Green %.2f" % avgGreen)
     print("Average Red %.2f" % avgRed)
     print("Average Blue %.2f" % avgBlue)
 
     # Future Improvements:
     # with data collected, you have averages and can implement
-    # a function to detect what liquid you are in
-
-
+    # a function to return what kind of liquid fits the averages
