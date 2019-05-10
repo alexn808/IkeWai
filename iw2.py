@@ -82,10 +82,10 @@ level_count = 1
 sleep_between_trials = 3600
 
 adc_initial = 0
-depth = 0
+depth = 1
 #steps_for_foot = 125 # Real
-steps_for_foot = 30  # demo
-steps_for_5_foot = steps_for_foot * 1 # change to 5 after demo
+steps_for_foot = 125 # demo
+steps_for_5_foot = steps_for_foot * 5 # change to 5 after demo
 
 
 if __name__ == "__main__":
