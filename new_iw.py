@@ -77,15 +77,17 @@ def get_bad_sensor(y_value):
 
 read_array = [read_adc0, read_adc1, read_rgb, read_acc, read_hot]
 total_steps = 0
-level_count = 1
+# How much increments you want to go up
+# Adjustable
+level_count = 3
 #3600 1 hour
 #Time between samples
-sleep_between_trials = 10 # change to 3600 after demo
+sleep_between_trials = 3600 # change to 3600 after demo
 
 adc_initial = 0
 depth = 0
 #steps_for_foot = 125 # Real
-steps_for_foot = 30 # demo
+steps_for_foot = 125 # demo
 steps_for_5_foot = steps_for_foot * 5 # change to 5 after demo
 
 
@@ -114,6 +116,11 @@ if __name__ == "__main__":
     iw_dict_acc_l = []
     iw_dict_hot_l = []
 
+    count = 0
+    while count != 1:
+        lib.iw_motor.set_step(0, 0, 0, 0)
+        time.sleep(60)
+        count += 1
     while True:
         try:
             # Get the current date and time from computer in format: MMDDYYYY-HHMMSS for log file purposes.
@@ -158,45 +165,8 @@ if __name__ == "__main__":
             except IOError:
                 log_iw('IOError from initial RGB occurred...')
                 pass
-
-            # # Lower sensor module to the water-air interface.
-            # try:
-            #     log_iw("Dropping sensor module to water-air interface...")
-            #
-            #     while 12 > adc_initial < 2:
-            #         lib.iw_motor.lower_sensors(steps_for_foot)
-            #         total_steps = total_steps + steps_for_foot
-            #         adc_initial = lib.iw_adc.get_adc0()
-            #         log_iw(adc_initial)
-            #         depth += 1
-            #         log_iw('Depth to water level:    ' + str(depth))
-            # except IOError:
-            #     log_iw('IOError from ADC occurred...')
-            #     pass
-
-            # Lower sensor module to the water-air interface.
-
-            log_iw("Dropping sensor module to water-air interface...")
-
-            while 0.4 > adc_initial > 12:
-                try:
-                    lib.iw_motor.lower_sensors(steps_for_foot)
-                    total_steps = total_steps + steps_for_foot
-                    adc_initial = lib.iw_adc.get_adc0()
-                    log_iw(adc_initial)
-                    depth += 1
-                    print('Depth to water level: %s', depth)
-                    log_iw('Depth to water level:    ' + str(depth))
-                except IOError:
-                    log_iw('IOError from ADC during finding occurred...')
-                    break
-
-            # Lower sensor module length of module.
-            log_iw('Lowering sensor module for complete submersion...')
-            lib.iw_motor.lower_sensors(5)
-            total_steps = total_steps + 5
-
-            # Complete increment_count amount of 10-sample collections at 5 foot intervals.
+            # Drop the module all the way down
+            #sampling
             for w in range(0, level_count):
                 level_dict = 'Level ' + str(w)
                 iw_dict[level_dict] = ''
@@ -261,47 +231,16 @@ if __name__ == "__main__":
                                 iw_dict_hot_l.append(iw_dict_hot)
                             pass
 
-                # Lower sensor module 5 more feet.
-                log_iw('Lowering sensor module to next increment...')
-                lib.iw_motor.lower_sensors(steps_for_5_foot)
+                # raise sensor module 5 more feet.
+                log_iw('raise sensor module to next increment...')
+                lib.iw_motor.raise_sensors(steps_for_5_foot)
                 total_steps = total_steps + steps_for_5_foot
                 time.sleep(5)
-
-            # Write the data into the log files
-            iw_dict['ADC'] = iw_dict_adc
-            log_iw(iw_dict)
-            log_iw(iw_dict_adc)
-            log_iw(iw_dict_rgb)
-            log_iw(iw_dict_acc)
-            log_iw(iw_dict_hot)
-
-            # saving the time for the data
-            t = time.localtime()
-            timestamp = time.strftime('%b-%d-%Y', t)
-            # save path for sensor data
-            save_path = '/home/pi/Desktop/ikewai/data'
-
-            # Raise sensor module to water-air interace.
-            #lib.iw_motor.raise_sensors(steps_for_5_foot)
-            try:
-                # Raise sensor module until water level.
-
-                log_iw("Raising load to water-air interface...")
-                log_iw(lib.iw_adc.get_adc0())
-                print('raiseee')
-                adc_initial = lib.iw_adc.get_adc0()
-                print(adc_initial)
-                while 0.4 < adc_initial < 12:
-                    print('Im raising')
-                    print(adc_initial)
-                    lib.iw_motor.raise_sensors(total_steps)
-                    total_steps = total_steps + steps_for_foot
-                    adc_initial = lib.iw_adc.get_adc0()
-            except IOError:
-                log_iw('IOError from ADC during raising occurred...')
-                pass
-
-
+            count = 0
+            while count != 1:
+                lib.iw_motor.set_step(0, 0, 0, 0)
+                time.sleep(60)
+                count += 1
             log_iw('Sleeping...')
             time.sleep(sleep_between_trials)
 

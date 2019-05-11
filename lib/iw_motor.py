@@ -82,7 +82,7 @@ def set_step(w1, w2, w3, w4):
 #counterclockwise when facing nonshaft side of motor
 
 
-def lower_sensors(steps):
+def raise_sensors(steps):
     for i in range(0, steps):
         set_step(1, 0, 0, 1)
         time.sleep(delay)
@@ -94,13 +94,13 @@ def lower_sensors(steps):
         time.sleep(delay)
 
     # Cut power to motor.
-    set_step(0, 0, 0, 0)
+    #set_step(0, 0, 0, 0)
 
     # Hold motor position.
     # setStep(1,0,1,0)
 
 
-def raise_sensors(steps):
+def lower_sensors(steps):
     for i in range(0, steps):
         set_step(1,0,1,0)
         time.sleep(delay)
@@ -112,4 +112,4 @@ def raise_sensors(steps):
         time.sleep(delay)
 
     # Cut power to motor.
-    set_step(0, 0, 0, 0)
+    #set_step(0, 0, 0, 0)

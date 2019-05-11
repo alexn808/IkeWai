@@ -7,7 +7,7 @@ import time
 
 # Choose a delay between 0.0055 and greater
 delay = 0.0055
-steps = 500
+steps = 5000
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -58,15 +58,15 @@ def set_step(w1, w2, w3, w4):
 # 50% duty cycle
 
 #clockwise when facing the nonshaft side of motor
-# for i in range(0, steps):
-#     setStep(1,0,1,0)
-#     time.sleep(delay)
-#     setStep(0,1,1,0)
-#     time.sleep(delay)
-#     setStep(0,1,0,1)
-#     time.sleep(delay)
-#     setStep(1,0,0,1)
-#     time.sleep(delay)
+for i in range(0, steps):
+    set_step(1,0,1,0)
+    time.sleep(delay)
+    set_step(0,1,1,0)
+    time.sleep(delay)
+    set_step(0,1,0,1)
+    time.sleep(delay)
+    set_step(1,0,0,1)
+    time.sleep(delay)
 
 # Reverse previous step sequence to reverse motor direction
 #setStep(0,0,0,0)
@@ -74,15 +74,15 @@ def set_step(w1, w2, w3, w4):
 #counterclockwise when facing nonshaft side of motor
 
 
-for i in range(0, steps):
-    set_step(1, 0, 0, 1)
-    time.sleep(delay)
-    set_step(0, 1, 0, 1)
-    time.sleep(delay)
-    set_step(0, 1, 1, 0)
-    time.sleep(delay)
-    set_step(1, 0, 1, 0)
-    time.sleep(delay)
+#for i in range(0, steps):
+ #   set_step(1, 0, 0, 1)
+  #  time.sleep(delay)
+   # set_step(0, 1, 0, 1)
+  #  time.sleep(delay)
+  #  set_step(0, 1, 1, 0)
+  #  time.sleep(delay)
+  #  set_step(1, 0, 1, 0)
+  #  time.sleep(delay)
 
 # Cut power to motor.
 set_step(0, 0, 0, 0)
