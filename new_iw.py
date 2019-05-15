@@ -77,8 +77,10 @@ def get_bad_sensor(y_value):
 
 read_array = [read_adc0, read_adc1, read_rgb, read_acc, read_hot]
 total_steps = 0
-# How much increments you to go up
-# Adjustable
+# Change the level_count for how much increments you want to go up
+# from the bottom of the well
+# The value is how much times it goes up
+# ex. 3 = 15 feet up from bottom, 4 = 20 feet up from bottom
 level_count = 3
 #3600 1 hour
 #Time between samples
