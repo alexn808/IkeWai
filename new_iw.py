@@ -77,7 +77,7 @@ def get_bad_sensor(y_value):
 
 read_array = [read_adc0, read_adc1, read_rgb, read_acc, read_hot]
 total_steps = 0
-# How much increments you want to go up
+# How much increments you to go up
 # Adjustable
 level_count = 3
 #3600 1 hour
@@ -117,6 +117,7 @@ if __name__ == "__main__":
     iw_dict_hot_l = []
 
     count = 0
+    # Dropping the module down for about 60 seconds
     while count != 1:
         lib.iw_motor.set_step(0, 0, 0, 0)
         time.sleep(60)
@@ -154,6 +155,8 @@ if __name__ == "__main__":
             dt = "".join(dt)
 
             # Log files for debug in case of errors
+            # Sometimes the log file has errors since the path
+            # for the log file is written, you may have to comment this out this section out
             log_name = 'log_' + dt + '.txt'
             logging.basicConfig(filename=r'/home/pi/Desktop/ikewai/logs/client_logs/' + log_name, level=logging.DEBUG, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
             log_iw('iw.py starting...')
@@ -236,6 +239,7 @@ if __name__ == "__main__":
                 lib.iw_motor.raise_sensors(steps_for_5_foot)
                 total_steps = total_steps + steps_for_5_foot
                 time.sleep(5)
+                # Dropping the module down again
             count = 0
             while count != 1:
                 lib.iw_motor.set_step(0, 0, 0, 0)

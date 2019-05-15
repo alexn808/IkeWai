@@ -80,12 +80,12 @@ total_steps = 0
 level_count = 1
 #3600 1 hour
 #Time between samples
-sleep_between_trials = 10 # change to 3600 after demo
+sleep_between_trials = 3600 # change to 3600 after demo
 
 adc_initial = 0
 depth = 0
 #steps_for_foot = 125 # Real
-steps_for_foot = 30 # demo
+steps_for_foot = 125 # demo
 steps_for_5_foot = steps_for_foot * 5 # change to 5 after demo
 
 
